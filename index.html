@@ -32,12 +32,12 @@
                 </div>
                 <div>
                     <h1 class="text-xl sm:text-2xl font-bold tracking-tight">แดชบอร์ดสารสนเทศนักเรียน ห้อง ม.5/1</h1>
-                    <p class="text-xs text-indigo-100 font-light">ปีการศึกษา 2569 | อ.แม่อาย จ.เชียงใหม่</p>
+                    <p class="text-xs text-indigo-100 font-light">ปีการศึกษา 2569 | อ.แม่อาย จ.เชียงใหม่ (คุ้มครองข้อมูลส่วนบุคคล - PDPA)</p>
                 </div>
             </div>
             <div class="hidden sm:flex items-center space-x-2 bg-white/10 px-3 py-1.5 rounded-lg text-xs backdrop-blur-sm">
-                <i class="fa-regular fa-clock text-yellow-300"></i>
-                <span>อัปเดตล่าสุด: พฤษภาคม 2569</span>
+                <i class="fa-solid fa-shield-halved text-emerald-300"></i>
+                <span>PDPA Compliant</span>
             </div>
         </div>
     </header>
@@ -142,14 +142,11 @@
             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
                 <div>
                     <h2 class="text-lg font-bold text-slate-800">รายชื่อนักเรียนทั้งหมด (ม.5/1)</h2>
-                    <p class="text-xs text-slate-500">ค้นหา กรอง และตรวจสอบข้อมูลการติดต่อฉุกเฉิน</p>
+                    <p class="text-xs text-slate-500">ค้นหา กรอง และตรวจสอบข้อมูลสารสนเทศทั่วไป</p>
                 </div>
 
-                <!-- Export & Control Buttons -->
+                <!-- Control Buttons -->
                 <div class="flex items-center gap-2">
-                    <button onclick="exportCSV()" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-medium transition flex items-center gap-1.5 shadow-sm">
-                        <i class="fa-solid fa-file-excel"></i> ส่งออก CSV
-                    </button>
                     <button onclick="resetFilters()" class="px-3.5 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-xl text-xs font-medium transition flex items-center gap-1.5">
                         <i class="fa-solid fa-rotate-left"></i> รีเซ็ตตัวกรอง
                     </button>
@@ -161,7 +158,7 @@
                 <!-- Search Box -->
                 <div class="relative">
                     <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-                    <input type="text" id="searchInput" oninput="filterData()" placeholder="ค้นหาชื่อ, ชื่อเล่น, รหัส, เบอร์..." 
+                    <input type="text" id="searchInput" oninput="filterData()" placeholder="ค้นหาชื่อ, ชื่อเล่น, รหัส..." 
                            class="w-full pl-9 pr-3 py-2 text-xs bg-white rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500">
                 </div>
 
@@ -211,7 +208,7 @@
                             <th class="py-3 px-4 text-center">ชื่อเล่น</th>
                             <th class="py-3 px-4 text-center">เพศ</th>
                             <th class="py-3 px-4 text-center">กรุ๊ปเลือด</th>
-                            <th class="py-3 px-4">เบอร์โทรศัพท์</th>
+                            <th class="py-3 px-4">เบอร์โทรศัพท์ (PDPA)</th>
                             <th class="py-3 px-4">ตำบล</th>
                             <th class="py-3 px-4 text-center">รายละเอียด</th>
                         </tr>
@@ -225,7 +222,7 @@
             <!-- Table Footer Stats -->
             <div class="mt-4 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
                 <span id="showingCount">กำลังแสดง 30 จาก 30 รายการ</span>
-                <span class="mt-2 sm:mt-0"><i class="fa-solid fa-circle-info text-indigo-500 mr-1"></i>คลิก "ดูข้อมูล" เพื่อแสดงรายละเอียดที่อยู่และผู้ปกครอง</span>
+                <span class="mt-2 sm:mt-0"><i class="fa-solid fa-lock text-indigo-500 mr-1"></i>ข้อมูลบางส่วนถูกปิดบังเพื่อคุ้มครองความเป็นส่วนตัว</span>
             </div>
         </div>
 
@@ -259,7 +256,7 @@
                         <div><span class="text-slate-400">เลขประจำตัวประชาชน:</span> <span id="modalCitizenId" class="font-mono font-medium text-slate-800">-</span></div>
                         <div><span class="text-slate-400">เพศ:</span> <span id="modalGender" class="font-medium text-slate-800">-</span></div>
                         <div><span class="text-slate-400">กรุ๊ปเลือด:</span> <span id="modalBlood" class="font-medium text-slate-800">-</span></div>
-                        <div><span class="text-slate-400">เบอร์โทรศัพท์:</span> <span id="modalPhone" class="font-medium text-indigo-600">-</span></div>
+                        <div><span class="text-slate-400">เบอร์โทรศัพท์:</span> <span id="modalPhone" class="font-mono font-medium text-indigo-600">-</span></div>
                     </div>
                 </div>
 
@@ -268,7 +265,7 @@
                     <h4 class="font-semibold text-slate-800 text-xs text-emerald-600 flex items-center">
                         <i class="fa-solid fa-location-dot mr-2"></i> ที่อยู่ตามทะเบียนบ้าน
                     </h4>
-                    <p><span class="text-slate-400">บ้านเลขที่/หมู่:</span> <span id="modalAddress" class="font-medium text-slate-800">-</span></p>
+                    <p><span class="text-slate-400">บ้านเลขที่:</span> <span id="modalAddress" class="font-medium text-slate-400 font-italic">[ซ่อนข้อมูลเพื่อความเป็นส่วนตัว]</span></p>
                     <p><span class="text-slate-400">หมู่บ้าน:</span> <span id="modalVillage" class="font-medium text-slate-800">-</span></p>
                     <p><span class="text-slate-400">ตำบล/อำเภอ/จังหวัด:</span> <span id="modalFullLocation" class="font-medium text-slate-800">-</span></p>
                 </div>
@@ -280,7 +277,7 @@
                     </h4>
                     <div class="grid grid-cols-2 gap-2">
                         <div><span class="text-slate-400">ชื่อผู้ปกครอง:</span> <span id="modalGuardian" class="font-medium text-slate-800">-</span></div>
-                        <div><span class="text-slate-400">เบอร์โทรผู้ปกครอง:</span> <span id="modalGuardianPhone" class="font-medium text-purple-600">-</span></div>
+                        <div><span class="text-slate-400">เบอร์โทรผู้ปกครอง:</span> <span id="modalGuardianPhone" class="font-mono font-medium text-purple-600">-</span></div>
                     </div>
                 </div>
             </div>
@@ -294,7 +291,7 @@
     </div>
 
     <script>
-        // Full Student Dataset (30 รายการ ครบถ้วนถูกต้อง)
+        // Full Student Dataset
         const rawData = [
           {"เลขที่": 1, "คำนำหน้า": "นาย", "ชื่อ": "วชิรพงศ์ กันทวงค์", "เพศ": "ชาย", "ชื่อเล่น": "คาเวีย", "รหัส": 9210, "รหัสบัตร": "1508700098616", "เบอร์": "0633365410", "กรุ๊ป": "O", "ที่อยู่": "130/3", "หมู่บ้าน": "บ้านหนองขี้นกยาง", "ตำบล": "แม่นาวาง", "อำเภอ": "แม่อาย", "จังหวัด": "เชียงใหม่", "ผู้ปกครอง": "นาง วิไลวรรณ กันทวงค์", "เบอร์ผู้ปกครอง": "0830593643"},
           {"เลขที่": 2, "คำนำหน้า": "นาย", "ชื่อ": "ภัทรพล แสนจัน", "เพศ": "ชาย", "ชื่อเล่น": "พจน์", "รหัส": 9270, "รหัสบัตร": "1579901393381", "เบอร์": "0962722285", "กรุ๊ป": "A", "ที่อยู่": "บ้านเลขที่26 หมู่10", "หมู่บ้าน": "หมู่บ้านห้วยส้าน", "ตำบล": "ท่าตอน", "อำเภอ": "แม่อาย", "จังหวัด": "เชียงใหม่", "ผู้ปกครอง": "วรรณี แสนจัน", "เบอร์ผู้ปกครอง": "0631128875"},
@@ -312,7 +309,7 @@
           {"เลขที่": 14, "คำนำหน้า": "นางสาว", "ชื่อ": "อังคณา มังคะชาติ", "เพศ": "หญิง", "ชื่อเล่น": "เอิร์น", "รหัส": 9249, "รหัสบัตร": "1568600034748", "เบอร์": "0626317335", "กรุ๊ป": "A", "ที่อยู่": "374", "หมู่บ้าน": "บ้านเมืองหนอง", "ตำบล": "แม่สาว", "อำเภอ": "แม่อาย", "จังหวัด": "เชียงใหม่", "ผู้ปกครอง": "นันทยศ ละกังถา", "เบอร์ผู้ปกครอง": "0801235660"},
           {"เลขที่": 15, "คำนำหน้า": "นางสาว", "ชื่อ": "ชญานี ลุงต๊ะ", "เพศ": "หญิง", "ชื่อเล่น": "ใส", "รหัส": 9332, "รหัสบัตร": "0050861006593", "เบอร์": "0816367972", "กรุ๊ป": "A", "ที่อยู่": "บ้านเลขที่14 หมู่16", "หมู่บ้าน": "บ้านศรีเวียง", "ตำบล": "แม่สาว", "อำเภอ": "แม่อาย", "จังหวัด": "เชียงใหม่", "ผู้ปกครอง": "นางมู้ ลุงจาย", "เบอร์ผู้ปกครอง": "0640918895"},
           {"เลขที่": 16, "คำนำหน้า": "นางสาว", "ชื่อ": "ปุณยนุช  ทิพจร", "เพศ": "LGBTQ+", "ชื่อเล่น": "เอมมี่", "รหัส": 9343, "รหัสบัตร": "1508600034675", "เบอร์": "0612272450", "กรุ๊ป": "ไม่ระบุ", "ที่อยู่": "221 ซ.7 ม.2 ", "หมู่บ้าน": "คายใน", "ตำบล": "แม่นาวาง", "อำเภอ": "แม่อาย", "จังหวัด": "เชียงใหม่", "ผู้ปกครอง": "กรชวัล สุขรดา", "เบอร์ผู้ปกครอง": "0899717702"},
-          {"เลขที่": 17, "คำนำหน้า": "นางสาว", "ชื่อ": "รวิภา ดวงเขียว", "เพศ": "หญิง", "ชื่อเล่น": "พลอย", "รหัส": 9443, "รหัสบัตร": "1508700096176", "เบอร์": "0903209616", "กรุ๊ป": "A", "ที่อยู่": "97 หมู่ 6", "หมู่บ้าน": "บ้านแม่ฮ่าง", "ตำบล": "แม่สาว", "อำเภอ": "แม่อาย", "จังหวัด": "เชียงใหม่", "ผู้ปกครอง": "นายณัฐพงษ์ ดวงเขียว ", "เบอร์ผู้ปกครอง": "06-4876-9360"},
+          {"เลขที่": 17, "คำนำหน้า": "นางสาว", "ชื่อ": "รวิภา ดวงเขียว", "เพศ": "หญิง", "ชื่อเล่น": "พลอย", "รหัส": 9443, "รหัสบัตร": "1508700096176", "เบอร์": "0903209616", "กรุ๊ป": "A", "ที่อยู่": "97 หมู่ 6", "หมู่บ้าน": "บ้านแม่ฮ่าง", "ตำบล": "แม่สาว", "อำเภอ": "แม่อาย", "จังหวัด": "เชียงใหม่", "ผู้ปกครอง": "นายณัฐพงษ์ ดวงเขียว ", "เบอร์ผู้ปกครอง": "0648769360"},
           {"เลขที่": 18, "คำนำหน้า": "นางสาว", "ชื่อ": "เพ็ญพิชชา แสนคํา", "เพศ": "หญิง", "ชื่อเล่น": "เพน", "รหัส": 10330, "รหัสบัตร": "1529902413831", "เบอร์": "0923260570", "กรุ๊ป": "B", "ที่อยู่": "ที่อยู่ผ้าใต้ บ้านเลขที่199 หมู่12", "หมู่บ้าน": "ผ้าใต้", "ตำบล": "ท่าตอน", "อำเภอ": "แม่อาย", "จังหวัด": "เชียงใหม่", "ผู้ปกครอง": "ชญาดา แสนหลวง", "เบอร์ผู้ปกครอง": "0813362383"},
           {"เลขที่": 19, "คำนำหน้า": "นางสาว", "ชื่อ": "จุฑามาศ ทิพย์แก้ว", "เพศ": "หญิง", "ชื่อเล่น": "แฟนซี", "รหัส": 10332, "รหัสบัตร": "1508600034527", "เบอร์": "0932984896", "กรุ๊ป": "O", "ที่อยู่": "206 หมู่ 8 ", "หมู่บ้าน": "บ้านโห้ง", "ตำบล": "แม่อาย", "อำเภอ": "แม่อาย", "จังหวัด": "เชียงใหม่", "ผู้ปกครอง": "ทวี อิ่นคำ", "เบอร์ผู้ปกครอง": "0820497263"},
           {"เลขที่": 21, "คำนำหน้า": "นางสาว", "ชื่อ": "เกศกนก พรรณานนท์", "เพศ": "หญิง", "ชื่อเล่น": "ลูกเกด", "รหัส": 10333, "รหัสบัตร": "1508700105841", "เบอร์": "0623251334", "กรุ๊ป": "ไม่ระบุ", "ที่อยู่": "บ้านเลขที่ 647 หมู่11", "หมู่บ้าน": "กลางนา", "ตำบล": "ท่าตอน", "อำเภอ": "แม่อาย", "จังหวัด": "เชียงใหม่", "ผู้ปกครอง": "นาง อรวรรณ ปันสาย", "เบอร์ผู้ปกครอง": "0930244749"},
@@ -331,6 +328,21 @@
         let genderChartInstance = null;
         let bloodChartInstance = null;
         let subdistrictChartInstance = null;
+
+        // PDPA Masking Functions
+        function maskPhone(phone) {
+            if (!phone || phone === '-' || phone.length < 9) return phone;
+            const clean = phone.replace(/[^0-9]/g, '');
+            if (clean.length === 10) {
+                return `${clean.substring(0, 3)}-XXX-${clean.substring(7)}`;
+            }
+            return phone;
+        }
+
+        function maskCitizenId(id) {
+            if (!id || id.length < 13) return id;
+            return `X-XXXX-XXXXX-${id.substring(11, 12)}-${id.substring(12)}`;
+        }
 
         // Render Table Data
         function renderTable(data) {
@@ -370,7 +382,7 @@
                     <td class="py-3 px-4 text-center">${student.ชื่อเล่น}</td>
                     <td class="py-3 px-4 text-center">${genderBadge}</td>
                     <td class="py-3 px-4 text-center">${bloodBadge}</td>
-                    <td class="py-3 px-4 font-mono text-indigo-600">${student.เบอร์}</td>
+                    <td class="py-3 px-4 font-mono text-indigo-600">${maskPhone(student.เบอร์)}</td>
                     <td class="py-3 px-4"><span class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-100">ต.${student.ตำบล}</span></td>
                     <td class="py-3 px-4 text-center">
                         <button onclick="openModal(${student.เลขที่})" class="px-2.5 py-1 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-[11px] font-medium transition shadow-sm flex items-center justify-center gap-1 mx-auto">
@@ -386,11 +398,8 @@
 
         // Render Charts
         function updateCharts(data) {
-            // Count Gender
             const genderCounts = { 'ชาย': 0, 'หญิง': 0, 'LGBTQ+': 0 };
-            // Count Blood Type
             const bloodCounts = { 'A': 0, 'B': 0, 'O': 0, 'AB': 0, 'ไม่ระบุ': 0 };
-            // Count Subdistrict
             const subCounts = {};
 
             data.forEach(s => {
@@ -399,7 +408,6 @@
                 subCounts[s.ตำบล] = (subCounts[s.ตำบล] || 0) + 1;
             });
 
-            // Destroy previous charts if exist
             if (genderChartInstance) genderChartInstance.destroy();
             if (bloodChartInstance) bloodChartInstance.destroy();
             if (subdistrictChartInstance) subdistrictChartInstance.destroy();
@@ -486,7 +494,7 @@
             filterData();
         }
 
-        // Modal Handler
+        // Modal Handler (With PDPA Masking)
         function openModal(studentNo) {
             const student = rawData.find(s => s.เลขที่ === studentNo);
             if (!student) return;
@@ -494,17 +502,18 @@
             document.getElementById('modalBadge').innerText = student.เลขที่;
             document.getElementById('modalName').innerText = `${student.คำนำหน้า}${student.ชื่อ}`;
             document.getElementById('modalSub').innerText = `รหัส: ${student.รหัส} | ชื่อเล่น: ${student.ชื่อเล่น}`;
-            document.getElementById('modalCitizenId').innerText = student.รหัสบัตร;
+            document.getElementById('modalCitizenId').innerText = maskCitizenId(student.รหัสบัตร);
             document.getElementById('modalGender').innerText = student.เพศ;
             document.getElementById('modalBlood').innerText = student.กรุ๊ป;
-            document.getElementById('modalPhone').innerText = student.เบอร์;
+            document.getElementById('modalPhone').innerText = maskPhone(student.เบอร์);
             
-            document.getElementById('modalAddress').innerText = student.ที่อยู่;
+            // Masked Address
+            document.getElementById('modalAddress').innerText = "บ้านเลขที่ถูกซ่อนไว้";
             document.getElementById('modalVillage').innerText = student.หมู่บ้าน;
             document.getElementById('modalFullLocation').innerText = `ต.${student.ตำบล} อ.${student.อำเภอ} จ.${student.จังหวัด}`;
             
             document.getElementById('modalGuardian').innerText = student.ผู้ปกครอง;
-            document.getElementById('modalGuardianPhone').innerText = student.เบอร์ผู้ปกครอง;
+            document.getElementById('modalGuardianPhone').innerText = maskPhone(student.เบอร์ผู้ปกครอง);
 
             document.getElementById('studentModal').classList.remove('hidden');
             document.getElementById('studentModal').classList.add('flex');
@@ -515,25 +524,7 @@
             document.getElementById('studentModal').classList.remove('flex');
         }
 
-        // Export CSV
-        function exportCSV() {
-            let csvContent = "\uFEFFเลขที่,รหัสนักเรียน,คำนำหน้า,ชื่อ-สกุล,ชื่อเล่น,เพศ,กรุ๊ปเลือด,เบอร์โทร,ที่อยู่,หมู่บ้าน,ตำบล,อำเภอ,จังหวัด,ผู้ปกครอง,เบอร์ผู้ปกครอง\n";
-            
-            rawData.forEach(s => {
-                csvContent += `"${s.เลขที่}","${s.รหัส}","${s.คำนำหน้า}","${s.ชื่อ}","${s.ชื่อเล่น}","${s.เพศ}","${s.กรุ๊ป}","${s.เบอร์}","${s.ที่อยู่}","${s.หมู่บ้าน}","${s.ตำบล}","${s.อำเภอ}","${s.จังหวัด}","${s.ผู้ปกครอง}","${s.เบอร์ผู้ปกครอง}"\n`;
-            });
-
-            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement("a");
-            link.setAttribute("href", url);
-            link.setAttribute("download", "student_dashboard_m5-1.csv");
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
-
-        // Initialize App on Page Load
+        // Initialize App
         window.onload = function() {
             renderTable(rawData);
             updateCharts(rawData);
